@@ -5,6 +5,19 @@ document.addEventListener("mousemove", (e) => {
   const x = e.clientX;
   const y = e.clientY;
 
+  follower.style.left = `${x}px`;
+  follower.style.top = `${y}px`;
+
+  createTrail(x, y);
+});
+
+document.addEventListener("touchstart", (e) => {
+  for (const touch of e.touches) {
+    createTrail(touch.clientX, touch.clientY);
+  }
+}, { passive: true });
+
+function createTrail(x, y) {
   const trail = document.createElement("div");
   trail.textContent = "大谷将太郎";
   Object.assign(trail.style, {
@@ -24,10 +37,7 @@ document.addEventListener("mousemove", (e) => {
     trail.style.opacity = "0";
     setTimeout(() => trail.remove(), 500);
   }, 50);
-
-  follower.style.left = `${x}px`;
-  follower.style.top = `${y}px`;
-});
+}
 
 setInterval(() => {
   const word = floatingWords[Math.floor(Math.random() * floatingWords.length)];
@@ -39,7 +49,7 @@ setInterval(() => {
   el.style.top = `${Math.random() * 100}%`;
   el.style.fontSize = `${Math.random() * 1.5 + 1}rem`;
   el.style.animationDuration = `${5 + Math.random() * 5}s`;
-  el.style.color = "rgba(255, 255, 255, 0.2)"; 
+  el.style.color = "rgba(255, 255, 255, 0.5)"; 
 
 
   document.body.appendChild(el);
