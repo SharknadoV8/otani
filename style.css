@@ -22,9 +22,13 @@ body {
   z-index: 10;
   display: flex;
   gap: 0.5rem;
-  font-size: 4rem;
+  font-size: 3rem;
   font-weight: bold;
   color: white;
+}
+
+@media (min-width: 640px) {
+  .main-text { font-size: 4rem; }
 }
 
 .main-text span {
@@ -45,25 +49,24 @@ body {
 
 .orb {
   position: absolute;
-  width: 300px;
-  height: 300px;
+  width: 240px;
+  height: 240px;
   border-radius: 50%;
   filter: blur(80px);
   animation: pulse 6s ease-in-out infinite;
+  z-index: 0;
 }
 
 .orb1 {
   background: rgba(128, 0, 255, 0.3);
   top: 20%;
   left: 20%;
-  transform: rotateX(45deg) rotateY(45deg);
 }
 
 .orb2 {
   background: rgba(0, 128, 255, 0.3);
   bottom: 20%;
   right: 20%;
-  transform: rotateX(-30deg) rotateY(60deg);
 }
 
 @keyframes pulse {
@@ -87,7 +90,7 @@ body {
   position: absolute;
   white-space: nowrap;
   pointer-events: none;
-  color: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.15);
   animation: floatUp linear forwards;
 }
 
@@ -97,7 +100,7 @@ body {
     opacity: 0;
   }
   10% {
-    opacity: 0.2;
+    opacity: 0.3;
   }
   100% {
     transform: translateY(-200px);
